@@ -64,7 +64,15 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
-		
+		switch(col.collider.tag)
+        {
+            case "Collectible":
+                //if(col.collider.GetComponent<CollectibleScript>().thisCollectibleIs == col.collider.GetComponent<CollectibleScript>().collectibles.Apple)
+                {
+                    
+                }
+                break;
+        }
 
 	}
 
