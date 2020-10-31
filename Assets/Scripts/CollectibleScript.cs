@@ -5,5 +5,5 @@ using UnityEngine;
 public class CollectibleScript : MonoBehaviour
 {
     public enum collectibles {Apple, Banana, Cherry, Orange, Pineapple, Strawberry };
-    public collectibles thisCollectible;
+    public collectibles thisCollectibleIs;
 }
