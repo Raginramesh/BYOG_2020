@@ -1672,6 +1672,7 @@ GameObject:
   - component: {fileID: 1006294310}
   - component: {fileID: 1006294309}
   - component: {fileID: 1006294311}
+  - component: {fileID: 1006294315}
   - component: {fileID: 1006294314}
   - component: {fileID: 1006294313}
   - component: {fileID: 1006294312}
@@ -1840,6 +1841,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1006294315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006294308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3e523fe564e48a5843c0df2cf93b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1006294311}
+  runSpeed: 40
 --- !u!1 &1137668799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,8 +1897,8 @@ GameObject:
   - component: {fileID: 1256296463}
   - component: {fileID: 1256296462}
   - component: {fileID: 1256296464}
-  m_Layer: 0
-  m_Name: Terrain
+  m_Layer: 9
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
