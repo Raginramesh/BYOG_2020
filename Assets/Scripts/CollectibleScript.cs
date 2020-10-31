@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CollectibleScript : MonoBehaviour
 {
-    public enum collectibles {Apple, Banana, Cherry, Orange, Pineapple, Strawberry };
-    public collectibles thisCollectibleIs;
+    //public enum collectibles {Apple = 1 , Banana = 2 , Cherry = 3, Orange, Pineapple, Strawberry };
+    public string thisCollectibleIs;
+
+    private void Start()
+    {
+       
+    }
 }

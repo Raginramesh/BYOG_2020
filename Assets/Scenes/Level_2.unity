@@ -6395,7 +6395,7 @@ GameObject:
   - component: {fileID: 1172339489}
   m_Layer: 0
   m_Name: ArrowPlatform
-  m_TagString: Doors
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6478,7 +6478,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030324727, y: -0.13267031}
+  m_Offset: {x: -0.37027788, y: -0.37027788}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6489,7 +6489,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5451304, y: 0.3707636}
+  m_Size: {x: 0.5796442, y: 1.926111}
   m_EdgeRadius: 0
 --- !u!95 &1172339489
 Animator:
@@ -7129,7 +7129,7 @@ PrefabInstance:
     - target: {fileID: 9177419685968198374, guid: dc3de1381586d0e44a863975fe2c849b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177419686010482929, guid: dc3de1381586d0e44a863975fe2c849b,
         type: 3}
@@ -7399,7 +7399,7 @@ PrefabInstance:
     - target: {fileID: 9177419687350534182, guid: dc3de1381586d0e44a863975fe2c849b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177419687481965486, guid: dc3de1381586d0e44a863975fe2c849b,
         type: 3}

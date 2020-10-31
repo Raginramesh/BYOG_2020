@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +30,6 @@ public class PlayerController : MonoBehaviour
         if (horizontalMove == 0)
         {
             anime.SetBool("isWalk", false);
-            
-            
         }
         else
         {
@@ -62,21 +61,35 @@ public class PlayerController : MonoBehaviour
         
     }
 
-	private void OnCollisionEnter2D(Collision2D col)
-	{
-		switch(col.collider.tag)
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        switch (col.tag)
         {
             case "Collectible":
-                //if(col.collider.GetComponent<CollectibleScript>().thisCollectibleIs == col.collider.GetComponent<CollectibleScript>().collectibles.Apple)
+                CollectibleScript cs = col.GetComponent<CollectibleScript>();
+
+                if (cs.thisCollectibleIs == "Apple")
                 {
-                    
+                    Debug.Log("Apple");
                 }
+                else if (cs.thisCollectibleIs == "Orange")
+                {
+
+                }
+                else if (cs.thisCollectibleIs == "Straberry")
+                {
+
+                }
+                break;
+
+            case "Doors":
+                Debug.Log("Door");
                 break;
         }
 
-	}
+    }
 
-	public void Death()
+    public void Death()
     {
         anime.SetTrigger("isDead");
         //Invoke("Spawn", 2.0f);
@@ -91,9 +104,6 @@ public class PlayerController : MonoBehaviour
     public void JumpAnimOff()
     {
         anime.SetBool("isJump", false);
-        
-
-        print("Grounder");
     }
     
 }

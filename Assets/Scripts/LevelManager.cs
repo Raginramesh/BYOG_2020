@@ -8,16 +8,38 @@ public class LevelManager : MonoBehaviour
 {
     public GameManager gm;
     public int currentLevel = 0;
+    
     public GameObject menuScreen;
     public GameObject gameScreen;
     
     private PlayerController player;
+    private CharacterController2D cc;
 
     void Start()
     {
         if (gm == null)
             gm = this.GetComponent<GameManager>();
         player = gm.player.GetComponent<PlayerController>();
+        cc = gm.player.GetComponent<CharacterController2D>();
+        
+        currentLevel = PlayerPrefs.GetInt("Level");
+        
+        if (currentLevel == 0)
+        {
+            player.enabled = false;
+            cc.enabled = false;
+
+            gameScreen.SetActive(false);
+            menuScreen.SetActive(true);
+        }
+        else
+        {
+            player.enabled = true;
+            cc.enabled = true;
+
+            gameScreen.SetActive(true);
+            menuScreen.SetActive(false);
+        }
     }
 
     public void RetryLevel()
@@ -32,6 +54,8 @@ public class LevelManager : MonoBehaviour
         menuScreen.SetActive(false);
         gameScreen.SetActive(true);
         player.enabled = true;
+        cc.enabled = true;
+
     }
 
     public void NextLevel()

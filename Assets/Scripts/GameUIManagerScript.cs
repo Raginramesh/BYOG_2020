@@ -20,8 +20,10 @@ public class GameUIManagerScript : MonoBehaviour
     }
     public void OnQuitToMenuButtonClick()
     {
-        Destroy(gameManager);
+        //Destroy(gameManager);
+        PlayerPrefs.SetInt("Level", 0);
         SceneManager.LoadScene(0);
+        
     }
 
     public void OnPauseButtonClick()
