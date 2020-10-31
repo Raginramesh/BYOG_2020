@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Game Manager
   - Collectible
-  - Doors
+  - Object
   layers:
   - Default
   - TransparentFX

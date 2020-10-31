@@ -22,10 +22,8 @@ public class PlayerController : MonoBehaviour
 			anime = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
 	{
-
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (horizontalMove == 0)
         {
@@ -82,9 +80,19 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
 
-            case "Doors":
-                Debug.Log("Door");
+            case "Object":
+                ObjectScript os= col.GetComponent<ObjectScript>();
+                if (os.thisObjectiveIs == "Exit")
+                {
+                    
+                }
+                else if (os.thisObjectiveIs == "Death")
+                {
+                    Death();
+                }
                 break;
+
+
         }
 
     }
