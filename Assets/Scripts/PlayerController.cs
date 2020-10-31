@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+	public GameObject gm;
 
 	public CharacterController2D controller;
 
@@ -11,9 +13,10 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
@@ -32,10 +35,16 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 
-	void FixedUpdate ()
+	void FixedUpdate()
 	{
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
+	}
+
+	private void OnCollisionEnter2D(Collision2D col)
+	{
+		
+
 	}
 }
