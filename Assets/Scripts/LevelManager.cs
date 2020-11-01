@@ -26,17 +26,17 @@ public class LevelManager : MonoBehaviour
         
         if (currentLevel == 0)
         {
-            player.enabled = false;
-            cc.enabled = false;
-
+            //player.enabled = false;
+            //cc.enabled = false;
+            player.moveFlag = false;
             gameScreen.SetActive(false);
             menuScreen.SetActive(true);
         }
         else
         {
-            player.enabled = true;
-            cc.enabled = true;
-
+            //player.enabled = true;
+            //cc.enabled = true;
+            player.moveFlag = true;
             gameScreen.SetActive(true);
             menuScreen.SetActive(false);
         }
@@ -53,9 +53,9 @@ public class LevelManager : MonoBehaviour
     {
         menuScreen.SetActive(false);
         gameScreen.SetActive(true);
-        player.enabled = true;
-        cc.enabled = true;
-
+        //player.enabled = true;
+        //cc.enabled = true;
+        player.moveFlag = true;
     }
 
     public void NextLevel()

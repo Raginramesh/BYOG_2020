@@ -6,17 +6,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public GameObject gm;
+    public GameObject loadingScreen;
+
 
 	public CharacterController2D controller;
 	public Animator anime;
     public Transform initPos;
 	public float runSpeed = 40f;
+    public int deathType;
 
+
+    public bool moveFlag = false;
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
 
-    private void Start()
+    private void Awake()
     {
 		if (anime == null)
 			anime = this.GetComponent<Animator>();
@@ -24,10 +29,18 @@ public class PlayerController : MonoBehaviour
         if (controller == null)
             controller = this.GetComponent<CharacterController2D>();
     }
+    private void OnEnable()
+    {
+        anime.SetTrigger("isSpawning");
+    }
 
     void Update()
 	{
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if(moveFlag)
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        }
+        
         if (horizontalMove == 0)
         {
             anime.SetBool("isWalk", false);
@@ -87,10 +100,12 @@ public class PlayerController : MonoBehaviour
                 ObjectScript os= col.GetComponent<ObjectScript>();
                 if (os.thisObjectIs == "Exit")
                 {
-                    gm.GetComponent<LevelManager>().NextLevel();
+                    deathType = 1;
+                    Death();
                 }
                 else if (os.thisObjectIs == "Death")
                 {
+                    deathType = 0;
                     Death();
                 }
                 break;
@@ -100,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
+        
         this.enabled = false;
         controller.enabled = false;
 
@@ -109,11 +125,34 @@ public class PlayerController : MonoBehaviour
 
     public void Spawn()
     {
-        transform.position = initPos.position;
-        anime.SetTrigger("isSpawning");
+        if(deathType == 0)
+        {
+            transform.position = initPos.position;
+            anime.SetTrigger("isSpawning");
 
-        this.enabled = true;
-        controller.enabled = true;
+            this.enabled = true;
+            controller.enabled = true;
+        }
+        else if(deathType == 1)
+        {
+            StartCoroutine(changeLevel());
+        }
+        
+    }
+
+    public IEnumerator changeLevel()
+    {
+        loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        gm.GetComponent<LevelManager>().NextLevel();
+    }
+
+    public void spawnAnimFunction()
+    {
+        if(loadingScreen.activeInHierarchy)
+        {
+            loadingScreen.SetActive(false);
+        }
     }
 
     public void JumpAnimOff()
