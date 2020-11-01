@@ -85,15 +85,16 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Apple");
                     controller.m_JumpForce = 1000f;
+                    cs.EnablePoof();
 
                 }
                 else if (cs.thisCollectibleIs == "Orange")
                 {
-
+                    cs.EnablePoof();
                 }
                 else if (cs.thisCollectibleIs == "Strawberry")
                 {
-
+                    cs.EnablePoof();
                 }
                 break;
 

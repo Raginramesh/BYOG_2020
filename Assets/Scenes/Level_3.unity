@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisCollectibleIs: Apple
+  anim: {fileID: 0}
 --- !u!95 &336127201
 Animator:
   serializedVersion: 3
