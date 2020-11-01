@@ -222,6 +222,7 @@ MonoBehaviour:
   currentLevel: 0
   menuScreen: {fileID: 781721175}
   gameScreen: {fileID: 390886675}
+  loadingScreen: {fileID: 1527528485}
 --- !u!114 &187733276
 MonoBehaviour:
   m_ObjectHideFlags: 0

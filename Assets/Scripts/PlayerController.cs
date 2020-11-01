@@ -8,13 +8,11 @@ public class PlayerController : MonoBehaviour
 	public GameObject gm;
     public GameObject loadingScreen;
 
-
 	public CharacterController2D controller;
 	public Animator anime;
     public Transform initPos;
 	public float runSpeed = 40f;
     public int deathType;
-
 
     public bool moveFlag = false;
 	float horizontalMove = 0f;
@@ -31,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnEnable()
     {
+        transform.position = initPos.position;
         anime.SetTrigger("isSpawning");
     }
 
@@ -85,6 +84,8 @@ public class PlayerController : MonoBehaviour
                 if (cs.thisCollectibleIs == "Apple")
                 {
                     Debug.Log("Apple");
+                    controller.m_JumpForce = 1000f;
+
                 }
                 else if (cs.thisCollectibleIs == "Orange")
                 {
