@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnEnable()
     {
+        //gm.GetComponent<SoundManagerScript>().PlaySpawnSound();
         transform.position = initPos.position;
         anime.SetTrigger("isSpawning");
     }
@@ -51,8 +52,12 @@ public class PlayerController : MonoBehaviour
         //anime.SetFloat("Speed", horizontalMove);
 		if (Input.GetButtonDown("Jump"))
 		{
-			jump = true;
-            anime.SetBool("isJump",true);
+            if(moveFlag)
+            {
+                gm.GetComponent<SoundManagerScript>().PlayJumpSound();
+                jump = true;
+                anime.SetBool("isJump", true);
+            }
 
         }
 
@@ -69,10 +74,9 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
         // Move our character
-        if (moveFlag)
-        {
-            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        }
+        
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        
 		jump = false;
         
     }
@@ -89,14 +93,17 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("Apple");
                     controller.m_JumpForce += 200f;
                     col.enabled = false;
+                    gm.GetComponent<SoundManagerScript>().PlayCollectibleSound();
                     cs.EnablePoof();
                 }
                 else if (cs.thisCollectibleIs == "Orange")
                 {
+                    gm.GetComponent<SoundManagerScript>().PlayCollectibleSound();
                     cs.EnablePoof();
                 }
                 else if (cs.thisCollectibleIs == "Strawberry")
                 {
+                    gm.GetComponent<SoundManagerScript>().PlayCollectibleSound();
                     cs.EnablePoof();
                 }
                 break;
@@ -123,7 +130,7 @@ public class PlayerController : MonoBehaviour
         
         this.enabled = false;
         controller.enabled = false;
-
+        gm.GetComponent<SoundManagerScript>().PlayDieSound();
         anime.SetTrigger("isDead");
         //Invoke("Spawn", 2.0f);
     }
@@ -140,16 +147,17 @@ public class PlayerController : MonoBehaviour
         }
         else if(deathType == 1)
         {
-            StartCoroutine(changeLevel());
+            //StartCoroutine(changeLevel());
+            changeLevel();
         }
         
     }
 
-    public IEnumerator changeLevel()
+    public void changeLevel()
     {
-        loadingScreen.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
-        gm.GetComponent<LevelManager>().NextLevel();
+        //loadingScreen.SetActive(true);
+        //yield return new WaitForSeconds(1.0f);
+        StartCoroutine(gm.GetComponent<LevelManager>().NextLevel());
     }
 
     public void spawnAnimFunction()

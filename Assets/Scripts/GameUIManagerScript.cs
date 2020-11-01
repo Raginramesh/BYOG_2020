@@ -43,7 +43,7 @@ public class GameUIManagerScript : MonoBehaviour
 
     public void OnNextButtonClick()
     {
-        levelManager.NextLevel();
+        StartCoroutine(levelManager.NextLevel());
     }
 
     public void OnPlaybuttonClick()

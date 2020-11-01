@@ -56,18 +56,22 @@ public class LevelManager : MonoBehaviour
         player.moveFlag = true;
     }
 
-    public void NextLevel()
+    public IEnumerator NextLevel()
     {
         currentLevel = PlayerPrefs.GetInt("Level");
         currentLevel++;
 
         if (currentLevel < SceneManager.sceneCountInBuildSettings)
         {
+            loadingScreen.SetActive(true);
+            yield return new WaitForSeconds(1.0f);
             PlayerPrefs.SetInt("Level", currentLevel);
             SceneManager.LoadScene(currentLevel);
         }
         else
         {
+            loadingScreen.SetActive(true);
+            yield return new WaitForSeconds(1.0f);
             currentLevel = 0;
             PlayerPrefs.SetInt("Level", currentLevel);
 
