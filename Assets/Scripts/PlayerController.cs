@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     {
 		if (anime == null)
 			anime = this.GetComponent<Animator>();
+
+        if (controller == null)
+            controller = this.GetComponent<CharacterController2D>();
     }
 
     void Update()
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
                 {
 
                 }
-                else if (cs.thisCollectibleIs == "Straberry")
+                else if (cs.thisCollectibleIs == "Strawberry")
                 {
 
                 }
@@ -82,23 +85,24 @@ public class PlayerController : MonoBehaviour
 
             case "Object":
                 ObjectScript os= col.GetComponent<ObjectScript>();
-                if (os.thisObjectiveIs == "Exit")
+                if (os.thisObjectIs == "Exit")
                 {
-                    
+                    gm.GetComponent<LevelManager>().NextLevel();
                 }
-                else if (os.thisObjectiveIs == "Death")
+                else if (os.thisObjectIs == "Death")
                 {
                     Death();
                 }
                 break;
-
-
         }
 
     }
 
     public void Death()
     {
+        this.enabled = false;
+        controller.enabled = false;
+
         anime.SetTrigger("isDead");
         //Invoke("Spawn", 2.0f);
     }
@@ -107,6 +111,9 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = initPos.position;
         anime.SetTrigger("isSpawning");
+
+        this.enabled = true;
+        controller.enabled = true;
     }
 
     public void JumpAnimOff()
