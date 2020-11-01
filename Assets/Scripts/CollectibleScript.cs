@@ -19,7 +19,7 @@ public class CollectibleScript : MonoBehaviour
 
     public void DestroyObject()
     {
-        Destroy(this.gameObject);
+       Destroy(this.gameObject);
     }
 
 }

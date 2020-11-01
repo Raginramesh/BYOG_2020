@@ -68,8 +68,11 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        // Move our character
+        if (moveFlag)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        }
 		jump = false;
         
     }
@@ -83,11 +86,10 @@ public class PlayerController : MonoBehaviour
 
                 if (cs.thisCollectibleIs == "Apple")
                 {
-                    Debug.Log("Apple");
+                    //Debug.Log("Apple");
                     controller.m_JumpForce += 200f;
                     col.enabled = false;
                     cs.EnablePoof();
-
                 }
                 else if (cs.thisCollectibleIs == "Orange")
                 {

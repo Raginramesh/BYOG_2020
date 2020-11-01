@@ -157,16 +157,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739879335654925610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d3e523fe564e48a5843c0df2cf93b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  loadingScreen: {fileID: 0}
   controller: {fileID: 3739879335654925609}
   anime: {fileID: 0}
   initPos: {fileID: 0}
   runSpeed: 30
+  deathType: 0
+  moveFlag: 0
 --- !u!114 &3739879335654925609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +177,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739879335654925610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8977d2c4ebefc45b58042fb6856db721, type: 3}
   m_Name: 
@@ -188,7 +191,7 @@ MonoBehaviour:
     m_Bits: 566
   m_GroundCheck: {fileID: 3739879334181896910}
   m_CeilingCheck: {fileID: 3739879334143379665}
-  m_CrouchDisableCollider: {fileID: 3739879335654925607}
+  m_CrouchDisableCollider: {fileID: 0}
   m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
@@ -225,13 +228,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739879335654925610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 5cf7937122fa88849a31cd0437cbf68d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0034050643, y: 0.0076519996}
+  m_Offset: {x: 0.0027505122, y: 0.010905579}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -242,7 +245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2144435, y: 0.15315285}
+  m_Size: {x: 0.17840919, y: 0.13102856}
   m_EdgeRadius: 0
 --- !u!58 &3739879335654925606
 CircleCollider2D:
@@ -257,9 +260,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
+  m_Offset: {x: 0.0019521415, y: -0.055}
   serializedVersion: 2
-  m_Radius: 0.102938205
+  m_Radius: 0.10489036
 --- !u!95 &3739879335654925602
 Animator:
   serializedVersion: 3
