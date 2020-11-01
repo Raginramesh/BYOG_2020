@@ -15,12 +15,14 @@ public class PlayerController : MonoBehaviour
     public int deathType;
 
     public bool moveFlag = false;
-	float horizontalMove = 0f;
+    public bool deathFlag = false;
+    float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
 
     private void Awake()
     {
+        deathFlag = false;
 		if (anime == null)
 			anime = this.GetComponent<Animator>();
 
@@ -112,13 +114,21 @@ public class PlayerController : MonoBehaviour
                 ObjectScript os= col.GetComponent<ObjectScript>();
                 if (os.thisObjectIs == "Exit")
                 {
-                    deathType = 1;
-                    Death();
+                    if(!deathFlag)
+                    {
+                        deathType = 1;
+                        deathFlag = true;
+                        Death();
+                    }
                 }
                 else if (os.thisObjectIs == "Death")
                 {
-                    deathType = 0;
-                    Death();
+                    if (!deathFlag)
+                    {
+                        deathType = 0;
+                        deathFlag = true;
+                        Death();
+                    }
                 }
                 break;
         }
@@ -137,11 +147,11 @@ public class PlayerController : MonoBehaviour
 
     public void Spawn()
     {
-        if(deathType == 0)
+        if (deathType == 0)
         {
             transform.position = initPos.position;
             anime.SetTrigger("isSpawning");
-
+            deathFlag = false;
             this.enabled = true;
             controller.enabled = true;
         }
@@ -150,7 +160,6 @@ public class PlayerController : MonoBehaviour
             //StartCoroutine(changeLevel());
             changeLevel();
         }
-        
     }
 
     public void changeLevel()
