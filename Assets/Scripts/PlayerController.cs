@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 if (cs.thisCollectibleIs == "Apple")
                 {
                     Debug.Log("Apple");
-                    controller.m_JumpForce = 1000f;
+                    controller.m_JumpForce += 200f;
                     cs.EnablePoof();
 
                 }
