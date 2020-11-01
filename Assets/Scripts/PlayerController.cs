@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Apple");
                     controller.m_JumpForce += 200f;
+                    col.enabled = false;
                     cs.EnablePoof();
 
                 }
